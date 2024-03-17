@@ -26,22 +26,16 @@
 
         function toggleBlock(id) {
             if (currentBlock !== null) {
-                // Скрываем текущий открытый блок
-                currentBlock.querySelector("div").style.display = "none";
+                 currentBlock.querySelector("div").style.display = "none";
             }
 
             var block = blocks[id - 1];
             var content = block.querySelector("div");
 
-            // Открываем новый блок
             content.style.display = "block";
             currentBlock = block;
         }
-        /*else {
-                // Скрываем содержимое блока
-                content.style.display = "none";
-            }*/
-    </script>
+       </script>
 </head>
 <body>
     <div class="block" onclick="toggleBlock(1)">
