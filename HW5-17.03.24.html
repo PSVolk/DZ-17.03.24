@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Календарь</title>
+  <title>HW5</title>
   <style>
     table {
       border-collapse: collapse;
@@ -28,8 +28,7 @@
   </style>
 </head>
 <body>
-  <h1>HW5</h1>
-  <label for="month">Month: </label>
+   <label for="month">Month: </label>
   <input type="number" id="month" min="1" max="12">
 
   <label for="year">Year: </label>
@@ -49,30 +48,23 @@
       var calendarContainer = document.getElementById('calendar');
       var monthYearContainer = document.getElementById('month-year');
       
-      // Получаем значения из полей ввода
       var month = parseInt(monthInput.value);
       var year = parseInt(yearInput.value);
-
-      // Проверяем корректность ввода
+     
       if (isNaN(month) || isNaN(year) || month < 1 || month > 12) {
         alert('Пожалуйста, введите корректные значения для номера месяца и года');
         return;
       }
-
-      // Создаем объект Date для указанного месяца и года
+      
       var date = new Date(year, month - 1, 1);
-
-      // Определяем первый день месяца
-      var firstDay = (date.getDay() + 6) % 7; // Получаем понедельник вместо воскресенья
-
-      // Определяем количество дней в месяце
+      
+      var firstDay = (date.getDay() + 6) % 7; 
+      
       var lastDay = new Date(year, month, 0).getDate();
-
-      // Создаем HTML таблицу для календаря
+     
       var table = document.createElement('table');
       var tableBody = document.createElement('tbody');
-
-      // Создаем заголовок таблицы с названиями дней недели
+      
       var weekdays = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
       var weekdaysRow = document.createElement('tr');
       for (var i = 0; i < 7; i++) {
@@ -81,22 +73,21 @@
         weekdaysRow.appendChild(weekdayCell);
       }
       tableBody.appendChild(weekdaysRow);
-
-      // Заполняем остальную часть календаря
+    
       var dateNum = 1;
       for (var i = 0; i < 6; i++) {
         var row = document.createElement('tr');
 
         for (var j = 0; j < 7; j++) {
           if (i === 0 && j < firstDay) {
-            // Пустые ячейки перед первым днем месяца
+            
             var cell = document.createElement('td');
             row.appendChild(cell);
-          } else if (dateNum > lastDay) {
-            // Пустые ячейки после последнего дня месяца
-            break;
-          } else {
-            // Ячейка с датой
+          }
+          else if (dateNum > lastDay) {
+               break;
+          }
+          else {
             var cell = document.createElement('td');
             cell.textContent = dateNum;
             row.appendChild(cell);
@@ -110,14 +101,11 @@
       table.appendChild(tableBody);
       calendarContainer.innerHTML = '';
       calendarContainer.appendChild(table);
-      
-      // Обновляем название месяца и года
-        
+              
       var monthYearString = getMonthName(month) + ' ' + year;
       monthYearContainer.textContent = monthYearString;
     }
-
-    // Функция для получения названия месяца по его номеру
+    
     function getMonthName(month) {
       var months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
       return months[month - 1];
