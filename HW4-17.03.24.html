@@ -9,8 +9,7 @@
     <ul id="newsList"></ul>
 
     <script>
-        // Заранее подготовленный массив с новостями
-        var newsArray = [
+       var newsArray = [
             
 
 "Proin dictum nibh mollis, mollis magna sed, interdum purus. Maecenas viverra lorem id iaculis lobortis. In id dolor a leo elementum rhoncus at sit amet nunc. Fusce iaculis vulputate diam, eu vulputate velit ultrices imperdiet. In scelerisque nisi orci, in imperdiet lacus porttitor non. In sit amet tortor quis magna fermentum pellentesque. Vivamus sodales posuere urna, vitae hendrerit ipsum rhoncus vitae. Morbi a mauris eget felis suscipit dictum id ac erat. Ut diam ex, vulputate a eleifend et, imperdiet vitae elit. Sed ac sem vel justo finibus interdum. Vestibulum neque dolor, pharetra ut ligula quis, hendrerit euismod magna. Nulla ultricies cursus molestie. Nunc vitae ligula dapibus orci interdum convallis ac fringilla turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed bibendum sollicitudin odio, et pellentesque mauris lobortis ac.",
@@ -20,19 +19,14 @@
         ];
 
        var newsListElement = document.getElementById("newsList");
-
-    // Функция для генерации новости и добавления ее в список
-    function addNewsToList(news) {
+     function addNewsToList(news) {
       var li = document.createElement("li");
       li.textContent = news;
       newsListElement.appendChild(li);
     }
-
-    // Функция, которая будет вызываться при прокрутке
     function checkScroll() {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        // Перебираем новости и добавляем их по одной в список
-        for (var i = 0; i < 5; i++) {
+          for (var i = 0; i < 5; i++) {
           var news = newsArray.shift();
           if (news) {
             addNewsToList(news);
@@ -43,10 +37,8 @@
       }
     }
 
-    // Отслеживаем событие прокрутки страницы
-    window.addEventListener("scroll", checkScroll);
+   window.addEventListener("scroll", checkScroll);
 
-    // Загружаем первую порцию новостей
     checkScroll();
     </script>
 </body>
